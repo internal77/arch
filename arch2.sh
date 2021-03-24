@@ -62,8 +62,8 @@ fi
 echo 'Ставим иксы и драйвера'
 pacman -S $gui_install
 
-echo "Ставим XFCE"
-pacman -S xfce4 xfce4-goodies --noconfirm
+echo "Ставим Cinnamon"
+pacman -Sy cinnamon
 
 echo 'Cтавим DM'
 pacman -S lxdm --noconfirm
