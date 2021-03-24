@@ -79,6 +79,21 @@ echo 'Подключаем автозагрузку менеджера вход�
 systemctl enable NetworkManager
 
 echo 'Установка завершена! Перезагрузите систему.'
+
+echo 'Установка базовых программ и пакетов'
+sudo pacman -S reflector firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
+
+echo 'Установить рекомендумые программы?'
+read -p "1 - Да, 0 - Нет: " prog_set
+if [[ $prog_set == 1 ]]; then
+  #Можно заменить на pacman -Qqm > ~/.pacmanlist.txt
+  sudo pacman -S recoll chromium flameshot obs-studio veracrypt vlc freemind filezilla gimp libreoffice libreoffice-fresh-ru kdenlive neofetch qbittorrent galculator telegram-desktop viewnior --noconfirm
+  yay -Syy
+  yay -S xflux sublime-text-dev hunspell-ru pamac-aur-git megasync-nopdfium trello xorg-xkill ttf-symbola ttf-clear-sans --noconfirm
+elif [[ $prog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
+
 echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
 echo 'wget git.io/arch3.sh && sh arch3.sh'
 exit
