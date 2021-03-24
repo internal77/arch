@@ -66,8 +66,10 @@ mount /dev/sda1 /mnt/boot
 swapon /dev/sda3
 mount /dev/sda4 /mnt/home
 
-echo '3.1 Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
-echo "Server = http://mirrors.evowise.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+echo '3.1 Выбор зеркал для загрузки.'
+rm -rf /etc/pacman.d/mirrorlist
+wget https://git.io/mirrorlist
+mv -f ~/mirrorlist /etc/pacman.d/mirrorlist
 
 echo '3.2 Установка основных пакетов'
 pacstrap /mnt base base-devel linux linux-firmware nano dhcpcd netctl
