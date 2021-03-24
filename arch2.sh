@@ -78,8 +78,6 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 echo 'Подключаем автозагрузку менеджера входа и интернет'
 systemctl enable NetworkManager
 
-echo 'Установка завершена! Перезагрузите систему.'
-
 echo 'Установка базовых программ и пакетов'
 sudo pacman -S reflector firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
 
@@ -93,6 +91,10 @@ if [[ $prog_set == 1 ]]; then
 elif [[ $prog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
+
+
+echo 'Установка завершена! Перезагрузите систему.'
+
 
 echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
 echo 'wget git.io/arch3.sh && sh arch3.sh'
